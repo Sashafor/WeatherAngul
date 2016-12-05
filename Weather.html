@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="weather">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+
+    <div class="col-sm-6 col-md-3" style="text-align: center; background-color: aqua" ng-controller="WeatherController">
+        <span style="display: block; text-align: center"><b>По состоянию на:   {{ pogoda.updated }}</b></span>
+        <h3>{{ pogoda.sity }}</h3>
+        <p>{{ pogoda.country }}</p>
+        <img ng-src="http:{{ pogoda.icon }}" style="width: 100px">
+        <div style="color: green; font-size: 25px">
+            <span style="display: block">Температура</span>
+            <img ng-src="thermometer.svg" width="60px" height="120px">
+            <span><b><i> {{ pogoda.temp_c }} °C  /  {{ pogoda.temp_f }} °F</i></b></span>
+        </div>
+        <div style="color: blue; font-size: 25px">
+            <span style="display: block">Влажность</span>
+            <img ng-src="raindrop.svg" width="60px" height="120px">
+            <span><b><i>{{ pogoda.humidity }} % </i></b></span>
+        </div>
+            <div style="color: orange; font-size: 25px">
+            <span style="display: block">Скорость ветра</span>
+            <img ng-src="umbrella.svg" width="60px" height="120px">
+            <span><b><i>{{ pogoda.ms | number:1 }}  м/с</i></b></span>
+        </div>
+        <div style="color: brown; font-size: 25px">
+            <span style="display: block">Направление ветра</span>
+            <img ng-src="wind.svg" width="60px" height="120px">
+            <span><b><i>{{ pogoda.dir }}</i></b></span>
+        </div>
+    </div>
+
+</body>
+</html>
