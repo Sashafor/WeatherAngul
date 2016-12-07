@@ -11,6 +11,51 @@
 
     <div class="col-sm-6 col-md-3" style="text-align: center; background-color: aqua" ng-controller="WeatherController">
         <span style="display: block; text-align: center"><b>По состоянию на:   {{ pogoda.updated }}</b></span>
+        <form>
+            <input type="text" list="city" style="color: crimson; font-size: 18px" ng-model="searchCity.query"/>
+            <datalist id="city">
+                <option>Amsterdam</option>
+                <option>Athens</option>
+                <option>Belgrade</option>
+                <option>Berlin</option>
+                <option>Berne</option>
+                <option>Bratislava</option>
+                <option>Brussels</option>
+                <option>Budapest</option>
+                <option>Bucharest</option>
+                <option>Warsaw</option>
+                <option>Vatican</option>
+                <option>Vienna</option>
+                <option>Vilnius</option>
+                <option>Washington</option>
+                <option>Dublin</option>
+                <option>Zagreb</option>
+                <option>Canberra</option>
+                <option>Kiev Ukraine</option>
+                <option>Kishinev</option>
+                <option>Copenhagen</option>
+                <option>Lisbon</option>
+                <option>London</option>
+                <option>Ljubljana</option>
+                <option>Madrid</option>
+                <option>Mexico City</option>
+                <option>Minsk</option>
+                <option>Moscow</option>
+                <option>Oslo</option>
+                <option>Ottawa</option>
+                <option>Paris</option>
+                <option>Prague</option>
+                <option>Riga</option>
+                <option>Rome</option>
+                <option>Stockholm</option>
+                <option>Sofia</option>
+                <option>Tallinn</option>
+                <option>Tokyo</option>
+                <option>Helsinki</option>
+                <option>Odessa Ukraine</option>
+            </datalist>
+            <button ng-click="searchCity()">OK</button>
+        </form>
         <h3>{{ pogoda.sity }}</h3>
         <p>{{ pogoda.country }}</p>
         <img ng-src="http:{{ pogoda.icon }}" style="width: 100px">

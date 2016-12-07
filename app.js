@@ -2,25 +2,31 @@
 var app = angular.module('weather', []);
 
 app.controller('WeatherController', function ($scope, API) {
-    API.getWeather().then(function (data) {
-        $scope.pogoda = {
-            updated: data.current.last_updated,
-            sity: data.location.name,
-            country: data.location.country,
-            icon: data.current.condition.icon,
-            temp_c: data.current.temp_c,
-            temp_f: data.current.temp_f,
-            humidity: data.current.humidity,
-            ms: data.current.wind_mph*0.44704,
-            dir: data.current.wind_dir
-        };
-    });
+    $scope.searchCity = {
+        query: 'Odessa Ukraine'
+    };
+
+    $scope.searchCity = function () {
+        API.getWeather($scope.searchCity).then(function (data) {
+            $scope.pogoda = {
+                updated: data.current.last_updated,
+                sity: data.location.name,
+                country: data.location.country,
+                icon: data.current.condition.icon,
+                temp_c: data.current.temp_c,
+                temp_f: data.current.temp_f,
+                humidity: data.current.humidity,
+                ms: data.current.wind_mph*0.44704,
+                dir: data.current.wind_dir
+            };
+        });
+    };
 });
 
 
 app.service('API', function ($http, $q) {
     return {
-        getWeather: function () {
+        getWeather: function (params) {
             var key = "f1b687934143483eab8114757162011";
             var d = $q.defer();
             $http({
@@ -28,7 +34,7 @@ app.service('API', function ($http, $q) {
                 url: 'https://api.apixu.com/v1/current.json',
                 params: {
                     key: key,
-                    q: 'Odessa Ukraine'
+                    q: params.query
                 }
             }).then(function (weather) {
                 var pogoda = weather.data;
